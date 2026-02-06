@@ -1,0 +1,4 @@
+baseURL = "https://selfhostedsystems.com/"
+languageCode = "en-gb"
+title = "Self Hosted Systems"
+theme = "ananke"
