@@ -17,3 +17,8 @@
   name = "Scaling"
   url = "/docs/scaling/"
   weight = 40
+
+[[main]]
+  name = "About"
+  url = "/about/"
+  weight = 50

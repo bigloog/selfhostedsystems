@@ -4,10 +4,31 @@
     <div class="col-lg-12 text-center">
       <h1>{{ .Title }}</h1>
     </div>
+
     <div class="col-lg-9 col-xl-8 text-center">
-      <p class="lead">{{ .Params.lead | safeHTML }}</p>
-      <a class="btn btn-primary btn-cta rounded-pill btn-lg my-3" href="/docs/{{ if site.Params.doks.docsVersioning }}{{ site.Params.doks.docsVersion }}/{{ end }}guides/example-guide/" role="button">{{ i18n "get_started" }}</a>
-      {{ .Content }}
+      {{ with .Params.lead }}
+      <p class="lead">{{ . | safeHTML }}</p>
+      {{ end }}
+
+      <!-- Primary entry points (docs-first, no demo content) -->
+      <div class="mt-4">
+        <a class="btn btn-primary btn-cta rounded-pill btn-lg me-2 my-2"
+           href="/docs/operations/baselines/"
+           role="button">
+          Operational baselines
+        </a>
+
+        <a class="btn btn-outline-secondary rounded-pill btn-lg my-2"
+           href="/docs/operations/backups/"
+           role="button">
+          Backups that survive error
+        </a>
+      </div>
+
+      <!-- Page body from content/_index.md -->
+      <div class="mt-5 text-start">
+        {{ .Content }}
+      </div>
     </div>
   </div>
 </section>
@@ -19,26 +40,44 @@
     <div class="bg-dots"></div>
   </div>
   {{ end -}}
+
   {{ if eq $.Site.Language.LanguageName "English" }}
   <section class="section section-md section-features">
     <div class="container">
       <div class="row justify-content-center text-center">
+
         <div class="col-lg-5">
-          <h2 class="h4">Update content</h2>
-          <p>Edit <code>content/_index.md</code> to see this page change.</p>
+          <h2 class="h4">Operations first</h2>
+          <p>
+            Most outages are operational. Start with backups, restore testing,
+            monitoring, and runbooks before adding complexity.
+          </p>
         </div>
+
         <div class="col-lg-5">
-          <h2 class="h4">Add new content</h2>
-          <p>Add Markdown files to <code>content</code> to create new pages.</p>
+          <h2 class="h4">Explicit tradeoffs</h2>
+          <p>
+            Architecture decisions are framed in terms of cost, risk,
+            and failure modes — not ideology.
+          </p>
         </div>
+
         <div class="col-lg-5">
-          <h2 class="h4">Configure your site</h2>
-          <p>Edit your config in <code>config/_default/params.toml</code>.</p>
+          <h2 class="h4">Homelab as proving ground</h2>
+          <p>
+            Learn where systems break while the stakes are low,
+            before anyone depends on them.
+          </p>
         </div>
+
         <div class="col-lg-5">
-          <h2 class="h4">Read the docs</h2>
-          <p>Learn more in the <a href="https://getdoks.org/">Docs</a>.</p>
+          <h2 class="h4">Reference, not a feed</h2>
+          <p>
+            This site is meant to be bookmarked, cited, and reused —
+            not skimmed once and forgotten.
+          </p>
         </div>
+
       </div>
     </div>
   </section>
@@ -50,8 +89,12 @@
 <section class="section section-md container-fluid bg-light">
   <div class="row justify-content-center text-center">
     <div class="col-lg-7">
-      <h2 class="mt-2">Start building with Doks today</h2>
-      <a class="btn btn-primary rounded-pill px-4 my-2" href="/docs/{{ if site.Params.doks.docsVersioning }}{{ site.Params.doks.docsVersion }}/{{ end }}prologue/introduction/" role="button">{{ i18n "get-started" }}</a>
+      <h2 class="mt-2">Start with the operational basics</h2>
+      <a class="btn btn-primary rounded-pill px-4 my-2"
+         href="/docs/operations/"
+         role="button">
+        Operations documentation
+      </a>
     </div>
   </div>
 </section>
